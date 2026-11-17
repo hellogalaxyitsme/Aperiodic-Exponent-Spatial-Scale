@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+data/
+work/
+results/
+*.npz
+*.edf
+*.fif
+*.mat
+.DS_Store

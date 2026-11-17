@@ -1,0 +1,49 @@
+# Development configuration (participants 1-5). The confirmatory configuration (stageBC_confirm.yaml) is a frozen
+# copy of this file with the same parameters; only its header, split and participant list differ.
+split: development
+subjects: [sub-01, sub-02, sub-03, sub-04, sub-05]
+
+data:
+  drop_artifact_trials: true
+  epoch_s: 8.0
+
+spectra:
+  multitaper_NW: 4.0          # K = 2NW - 1 = 7 tapers, 0.5 Hz half-bandwidth on 8 s
+  mt_fmax_store: 120.0        # per-trial MT spectra stored up to this frequency
+  floor_band: [600.0, 900.0]  # white-floor estimate (upper bound), below the 1 kHz hardware low-pass
+  irasa_fs: 500.0             # decimate 2000 -> 500 Hz before IRASA
+  irasa_h: [1.1, 1.9, 0.05]   # start, stop (inclusive), step
+  irasa_nperseg_s: 2.0
+
+fit:
+  band: [2.0, 40.0]
+  specparam_peak_width: [1.0, 8.0]
+  specparam_max_peaks: 6
+
+pairs:
+  classes_primary: [lateral_temporal]       # H1 primary unit (also the H3 region)
+  classes_secondary: [mesial, basal_temporal, other_cortex]
+  primary_lags: [1, 2]                      # Corollary 3: D(lag 1) vs D(lag 2), available in every eligible run
+  secondary_lags: [1, 3]
+
+allpairs:
+  band_range: [2.0, 40.0]
+  n_bands: 40
+
+analysis:                                   # stageBC_analyze.py
+  primary_classes: [lateral_temporal]
+  dist_range_mm: [3.0, 80.0]
+  dist_bins_mm: [3, 7, 11, 16, 22, 30, 40, 55, 80, 120, 200]
+  far_mm: 45.0
+  emg_sensitivity_band: [2.0, 20.0]
+  high_band: [20.0, 40.0]
+  full_montage_min: 15
+  # prespecified confirmatory family (Holm): C1, C2, C3 (P-2), C4
+  primary_family: [H1_slope_ir_withinshaft, scalp_pair_slope_2_20Hz, P2_gap_2_20Hz, track_slope]
+  n_boot: 300
+  n_boot_gamma: 100
+
+bootstrap:
+  n_ratio: 1000
+  n_joint: 0                                # joint-fit bootstrap off in development (cost); point estimates only
+  seed: 20261113
