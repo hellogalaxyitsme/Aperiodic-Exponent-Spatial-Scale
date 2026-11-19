@@ -185,3 +185,8 @@ python analysis/statistical_inventory.py
 For release, the analysis scripts were renamed, data locations were made configurable through `apex.paths`, and
 module descriptions were rewritten. Computational code is unchanged. Rerunning the released scripts on the original
 intermediate files reproduces the existing outputs.
+
+## License
+
+Released under the MIT License (see `LICENSE`). The datasets are not part of this repository and remain under the terms
+of their original repositories.

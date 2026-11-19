@@ -8,6 +8,7 @@ version = "1.0.0"
 description = "Derivation-dependent aperiodic exponents in intracranial and scalp recordings: analysis library"
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
 dependencies = [
     "numpy", "scipy", "pandas", "joblib", "mne", "specparam==2.0.0rc6", "statsmodels", "scikit-learn",
     "h5py", "torch", "PyYAML", "matplotlib", "pymatreader",
