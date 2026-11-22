@@ -14,7 +14,8 @@ R = Path("results")
 FAMILY = ["robust/group.json", "anphy_v2/group.json", "straddle/group.json", "grid_v2/measure_group.json",
           "ds3478_followup/group.json", "final_round/seeg_group.json", "final_round/grid_robustness.json",
           "final_round/scalp_group.json"]
-CHECKS = ["revision/models_group.json", "revision/eog_eyestate_group.json", "revision/interp_group.json", "revision/ecg_group.json"]
+CHECKS = ["revision/models_group.json", "revision/eog_eyestate_group.json", "revision/interp_group.json", "revision/ecg_group.json",
+        "revision/sleep_derivation.json"]
 
 
 def walk(o, path, rows, src, n_group=None, scalp=False):
@@ -38,6 +39,7 @@ rows = []
 for f in FAMILY + [e for e in CHECKS if (R / e).exists()]:
     walk(json.load(open(R / f)), "", rows, f, scalp=f.endswith("scalp_group.json"))
 D = pd.DataFrame(rows)
+D = D[~((D.source == "revision/sleep_derivation.json") & D.test.str.startswith("spfixed"))].reset_index(drop=True)
 m = len(D)
 order = np.argsort(D.p.to_numpy())
 q = np.empty(m)

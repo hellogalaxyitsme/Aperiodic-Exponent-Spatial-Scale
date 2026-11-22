@@ -1,7 +1,7 @@
-# Aperiodic exponent estimates across spatial derivations: analysis code
+# Spatial derivation and aperiodic spectral estimates: analysis code
 
-Analysis code for the manuscript *Aperiodic exponent estimates across spatial derivations in human intracranial and
-scalp recordings*. It measures how the aperiodic (1/f-like) spectral exponent changes with the spatial derivation of the same
+Analysis code for the manuscript *Effects of spatial derivation on aperiodic spectral estimates in human intracranial
+and scalp EEG*. It measures how the aperiodic (1/f-like) spectral exponent changes with the spatial derivation of the same
 recordings. All contrasts use zero-sum derivations, so a reference signal common to all electrodes cancels:
 
 - bipolar contact separation in stereo-EEG;
@@ -117,6 +117,7 @@ python analysis/scalp_derivations.py measure --dataset modma --jobs 12
 python analysis/scalp_derivations.py analyze --jobs 16
 python analysis/scalp_anphy_ecg_regression.py measure --jobs 8
 python analysis/scalp_anphy_ecg_regression.py analyze --jobs 16
+python analysis/scalp_anphy_sleep_stage_interaction.py
 python analysis/scalp_preprocessing_variants.py --dataset ds003478 --out results/arbitration --jobs 16
 python analysis/scalp_preprocessing_variants.py --dataset anphy --out results/arbitration --jobs 16
 ```
@@ -156,20 +157,27 @@ python analysis/statistical_inventory.py
 
 | Manuscript item | Script(s) |
 |---|---|
-| Table 2 (prespecified tests C1-C4) | `depth_prespecified_spectra.py`, `depth_prespecified_tests.py` |
+| Table 2 (prespecified tests) | `depth_prespecified_spectra.py`, `depth_prespecified_tests.py` |
 | HUP replication (Results 3.1; Figure 2a) | `depth_replication_hup.py` |
 | Depth robustness (Table S1) | `depth_robustness_spectra.py`, `depth_robustness_tests.py`, `depth_anatomy_pathology.py` |
 | Contiguous and classifiable pairs (Results 3.1) | `depth_anatomy_pathology.py`, `depth_anatomy_classifiable.py` |
 | Distance profile (Figure 2b; S2) | `depth_distance_profile.py` |
 | Specparam, peak removal, adjacent and non-adjacent pairs (Figure 2c,d) | `depth_welch_spectra.py`, `depth_estimator_peak_tests.py` |
 | Subdural grids (Results 3.2; Figure 3; Table S2) | `grid_modes_and_mixture_model.py` (measure), `grid_robustness.py` |
-| Scalp P-2, pair slope, sub-bands, eye state (Results 3.3; Figure 4; Table S3) | `scalp_derivations.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_segments_ica.py` |
+| Scalp derivation contrast, pair slope, sub-bands (Results 3.3; Figure 4; Table S3) | `scalp_derivations.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_segments_ica.py` |
+| Eye-state and sleep-stage x derivation interactions (Results 3.4; Figure 5) | `scalp_derivations.py`, `spectral_specification_checks.py` (eog), `scalp_anphy_sleep_stage_interaction.py` |
 | ICA, EOG and ECG controls; interpolated channels (S4) | `scalp_anphy_segments_ica.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_ecg_regression.py`, `spectral_specification_checks.py` (eog, interp) |
-| Spectral model, fitting range, slope definition (Results 3.4; Figure 5; Tables S4-S6) | `spectral_specification_checks.py` (models, common), `specification_contrasts.py` |
+| Spectral model, fitting range, slope definition (Results 3.5; Figure 6; Tables S4-S6) | `spectral_specification_checks.py` (models, common), `specification_contrasts.py` |
 | Graph-mode zero-sum check (Methods 2.3) | `spectral_specification_checks.py` (grid) |
-| Mechanistic models (Results 3.5; S3) | `kernel_single_scale_fit.py`, `kernel_head_model.py`, `kernel_predict_scalp.py`, `kernel_compare_scalp.py`, `grid_modes_and_mixture_model.py` (fit), `mixture_compare_scalp.py` |
+| Spatial-covariance models (Results 3.6; S3) | `kernel_single_scale_fit.py`, `kernel_head_model.py`, `kernel_predict_scalp.py`, `kernel_compare_scalp.py`, `grid_modes_and_mixture_model.py` (fit), `mixture_compare_scalp.py` |
 | Multiplicity inventory (Data S1) | `statistical_inventory.py` |
 | Theory checks (S1) | `verification/verify_theory.py` |
+
+## Names used in the code
+
+The code uses short internal names: `P2` (or P-2) is the scalp derivation contrast (average-reference minus Laplacian
+exponent, written Δχ<sub>AR−L</sub> in the paper), and `C1`-`C4` are the four prespecified tests in Table 2 (depth
+separation slope, scalp pair slope, derivation contrast, depth-scalp tracking).
 
 ## Prespecified analyses and frozen files
 
