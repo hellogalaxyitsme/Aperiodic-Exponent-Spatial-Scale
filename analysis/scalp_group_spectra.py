@@ -1,4 +1,4 @@
-"""Group-mean average-reference and Laplacian spectra, interior channels (Figure S3).
+"""Group-mean average-reference and Laplacian spectra, interior channels (Figure S4).
 
 ds003478 eyes open and eyes closed, ANPHY wake and N2; all participants, no selection. IRASA fractal spectra and Welch
 spectra, each centred on its mean log power over 2-20 Hz. Needs the scalp unit cache written by scalp_derivations.py.

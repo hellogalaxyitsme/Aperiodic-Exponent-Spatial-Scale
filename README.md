@@ -155,6 +155,7 @@ python analysis/mixture_compare_scalp.py
 **8. Statistical inventory (Data S1)**
 
 ```
+python analysis/scalp_anphy_ica_participant_tests.py
 python analysis/statistical_inventory.py
 ```
 
@@ -168,13 +169,13 @@ python analysis/statistical_inventory.py
 | Contiguous and classifiable pairs (Results 3.1) | `depth_anatomy_pathology.py`, `depth_anatomy_classifiable.py` |
 | Distance profile (Figure 1b; S2) | `depth_distance_profile.py` |
 | Specparam, peak removal, adjacent and non-adjacent pairs (Figure 1c,d) | `depth_welch_spectra.py`, `depth_estimator_peak_tests.py` |
-| Subdural grids (Results 3.2; Figure 2; Table S2) | `grid_modes_and_mixture_model.py` (measure), `grid_robustness.py` |
-| Scalp derivation contrast and sub-bands (Results 3.3; Figure 3; Table S3); scalp pair slope (Figure S2) | `scalp_derivations.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_segments_ica.py` |
-| Group-mean spectra by derivation (Figure S3) | `scalp_group_spectra.py` |
+| Subdural grids (Results 3.2; Figures 2, S2; Table S2) | `grid_modes_and_mixture_model.py` (measure), `grid_robustness.py` |
+| Scalp derivation contrast and sub-bands (Results 3.3; Figure 3; Table S3); scalp pair slope (Figure S3) | `scalp_derivations.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_segments_ica.py` |
+| Group-mean spectra by derivation (Figure S4) | `scalp_group_spectra.py` |
 | Eye-state and sleep-stage x derivation interactions (Results 3.4; Figure 4) | `scalp_derivations.py`, `spectral_specification_checks.py` (eog), `scalp_anphy_sleep_stage_interaction.py` |
 | Sleep-stage interaction on matched channels (Results 3.4; Figure 4d; S4) | `scalp_anphy_sleep_matched_channels.py`, `scalp_anphy_sleep_matched_channels_irasa.py` |
-| ICA, EOG and ECG controls; interpolated channels (S4) | `scalp_anphy_segments_ica.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_ecg_regression.py`, `spectral_specification_checks.py` (eog, interp) |
-| Spectral model, fitting range, slope definition (Results 3.5; Figure S4; Tables S4-S6) | `spectral_specification_checks.py` (models, common), `specification_contrasts.py` |
+| ICA, EOG and ECG controls; interpolated channels (S4) | `scalp_anphy_segments_ica.py`, `scalp_anphy_ica_participant_tests.py`, `scalp_ds003478_eye_state_ocular.py`, `scalp_anphy_ecg_regression.py`, `spectral_specification_checks.py` (eog, interp) |
+| Spectral model, fitting range, slope definition (Results 3.5; Figure S5; Tables S4-S6) | `spectral_specification_checks.py` (models, common), `specification_contrasts.py` |
 | Graph-mode zero-sum check (Methods 2.3; S2) | `spectral_specification_checks.py` (grid) |
 | Spatial-covariance models (Results 3.5; S3) | `kernel_single_scale_fit.py`, `kernel_head_model.py`, `kernel_predict_scalp.py`, `kernel_compare_scalp.py`, `grid_modes_and_mixture_model.py` (fit), `mixture_compare_scalp.py` |
 | Multiplicity inventory (Data S1) | `statistical_inventory.py` |

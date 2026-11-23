@@ -1,11 +1,11 @@
-"""Scalp derivation analyses (Results 3.3; Figures 3, S2; Tables S3, S7).
+"""Scalp derivation analyses (Results 3.3; Figures 3, S3; Table S3).
 
 measure (per participant x state or condition): IRASA fractal spectra (30 log centres, 2-20 Hz) and Welch spectra
 (0.5-45 Hz) for every average-referenced channel, every six-neighbour Hjorth Laplacian channel and 600 random channel
 pairs (seed 0).
   anphy    : W, N2, N3, R (participants with the 83-channel montage)
   ds003478 : all data, EOG-regressed, eyes open, eyes closed (segments from scalp_ds003478_eye_state_ocular.py)
-  modma    : all 128 channels and the 62 contacts nearest the ds003478 10-10 positions
+  modma    : full montage and the 62 contacts nearest the ds003478 10-10 positions
 analyze: P-2 (interior channels) and pair slope by IRASA, specparam fixed (2-20 Hz) and knee (1-30 Hz), five sub-bands
 of 2-20 Hz, and eye-state change by derivation.
 Usage: python analysis/scalp_derivations.py measure --dataset anphy --jobs 12

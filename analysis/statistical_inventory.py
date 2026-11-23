@@ -1,7 +1,8 @@
 """Inventory of the exploratory family: every participant-level sign-flip test with its source and
 Benjamini-Hochberg q (Supporting Information Data S1). Monte Carlo p-values are (b + 1)/(B + 1); outputs that stored
 b/B are converted exactly. A test reported by several analyses is counted once (listed in also_exported_as); opposite
-one-sided tests of the same quantity remain separate. Writes results/revision/statistical_inventory.csv.
+one-sided tests of the same quantity remain separate. The ANPHY ICA comparisons are taken from
+scalp_anphy_ica_participant_tests.py (participant-level). Writes results/revision/statistical_inventory.csv.
 Usage: python analysis/statistical_inventory.py
 """
 import json
@@ -42,6 +43,13 @@ for f in FAMILY + [e for e in CHECKS if (R / e).exists()]:
     walk(json.load(open(R / f)), "", rows, f, scalp=f.endswith("scalp_group.json"))
 D = pd.DataFrame(rows)
 D = D[~((D.source == "revision/sleep_derivation.json") & D.test.str.startswith("spfixed"))].reset_index(drop=True)
+# E036: the pooled ICA tests in anphy_v2 sign-flipped participant-states independently; they are replaced by the
+# participant-level tests (mean over states per participant, n = 26).
+ICA = "revision/anphy_ica_participant.json"
+D = D[~((D.source == "anphy_v2/group.json") & D.test.str.startswith("ica_minus_raw_"))]
+ica_rows = []
+walk({k: v for k, v in json.load(open(R / ICA)).items() if k.startswith("ica_minus_raw_")}, "", ica_rows, ICA)
+D = pd.concat([D, pd.DataFrame(ica_rows)], ignore_index=True)
 
 # Valid Monte Carlo p-values (Phipson & Smyth 2010): p = (b + 1) / (B + 1) for randomly sampled sign patterns (n > 16).
 # Older outputs stored b / B; b is recovered exactly from p and the number of permutations B used by each analysis.
@@ -50,7 +58,6 @@ D["n_perm"] = np.where((D.source == "anphy_v2/group.json") & ~D.test.str.contain
 mc = (D.n > 16) & ~D.get("p_method", pd.Series(index=D.index, dtype=object)).eq("mc_plus1")
 b = np.round(D.p * D.n_perm)
 assert np.allclose(D.p[mc] * D.n_perm[mc], b[mc], atol=1e-6), "p is not b/B for some Monte Carlo rows"
-D["p_reported_bB"] = D.p
 D.loc[mc, "p"] = (b[mc] + 1) / (D.n_perm[mc] + 1)
 D["permutation"] = np.where(D.n > 16, D.n_perm.astype(str) + " random", "exact")
 
