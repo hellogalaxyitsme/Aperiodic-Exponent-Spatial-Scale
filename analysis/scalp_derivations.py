@@ -1,4 +1,4 @@
-"""Scalp derivation analyses (Results 3.3; Figure 4; Tables S3, S7).
+"""Scalp derivation analyses (Results 3.3; Figures 3, S2; Tables S3, S7).
 
 measure (per participant x state or condition): IRASA fractal spectra (30 log centres, 2-20 Hz) and Welch spectra
 (0.5-45 Hz) for every average-referenced channel, every six-neighbour Hjorth Laplacian channel and 600 random channel

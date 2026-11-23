@@ -1,4 +1,4 @@
-"""Spectral specification and additional control analyses (Results 3.3-3.4; S4, S5; Figure 5).
+"""Spectral specification and additional control analyses (Results 3.4-3.5; S4, S5; Figures 4, S4).
 
 models : five specifications per spectrum (fixed fit over the band and over a wider range; knee fit over the wider
          range and over the band, each summarised by the band slope of the fitted aperiodic curve; asymptotic knee

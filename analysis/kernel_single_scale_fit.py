@@ -1,4 +1,4 @@
-"""Single-scale coherence kernel from the ds004752 subdural grid (Results 3.5, S3).
+"""Single-scale coherence kernel from the ds004752 subdural grid (Supporting Information S3).
 
 Tangential pair slope; per band, the normalised structure function fitted by A (1 - exp(-(d/lam)^p)); frequency-scaling
 exponent of the coherence length; frozen parameters (results/grid7a/frozen_params.json) used by kernel_predict_scalp.py.

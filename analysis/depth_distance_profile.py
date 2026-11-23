@@ -1,4 +1,4 @@
-"""Within-shaft pair exponent by separation bin, centred within patient (Figure 2b; per-bin counts in S2).
+"""Within-shaft pair exponent by separation bin, centred within patient (Figure 1b; per-bin counts in S2).
 Usage: python analysis/depth_distance_profile.py
 """
 import numpy as np

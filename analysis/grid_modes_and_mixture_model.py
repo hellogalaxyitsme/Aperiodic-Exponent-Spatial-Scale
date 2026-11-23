@@ -1,4 +1,4 @@
-"""Subdural grids (Results 3.2) and the two-component mixture model (Results 3.5, S3).
+"""Subdural grids (Results 3.2) and the two-component mixture model (Supporting Information S3).
 
 measure: per array (>= 8 good contacts; seizure-onset and resected contacts excluded), 8-s epochs, IRASA fractal spectra
   of every within-array pair and of every non-constant graph-Laplacian mode; tangential pair slope (5-80 mm) and mode

@@ -1,4 +1,4 @@
-"""Grid robustness (Results 3.2; Figure 3; Table S2).
+"""Grid robustness (Results 3.2; Figure 2; Table S2).
 
 measure: per-contact white-noise floor and Welch spectra of pairs, graph modes and referential contacts.
 analyze: reproduction from the IRASA cache, noise-floor subtraction, eight sub-bands of 2-40 Hz, specparam fixed

@@ -1,4 +1,4 @@
-"""Prediction of the ANPHY scalp contrasts from the frozen single-scale kernel (Results 3.5, S3).
+"""Prediction of the ANPHY scalp contrasts from the frozen single-scale kernel (Supporting Information S3).
 
 Inputs: results/grid7a/frozen_params.json and the New York Head lead field; no ANPHY measurement is read. Derivations as
 in the scalp analysis (interior Hjorth Laplacian vs average reference; the same 600 random pairs).

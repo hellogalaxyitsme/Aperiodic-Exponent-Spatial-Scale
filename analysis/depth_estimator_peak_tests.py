@@ -1,4 +1,4 @@
-"""Depth analyses with spectral parameterisation and peak removal (Results 3.1; Figure 2c,d).
+"""Depth analyses with spectral parameterisation and peak removal (Results 3.1; Figure 1c,d).
 
 C1 with specparam (fixed and knee), C2 without frontal channels, adjacent minus far spectra, peak-removed band-resolved
 C1 (eight sub-bands of 2-80 Hz), pooled non-adjacent analysis and adjacent-versus-non-adjacent comparison.
